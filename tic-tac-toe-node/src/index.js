@@ -3,9 +3,10 @@ const Game = require('../ttt_node/game.js')
 
 document.addEventListener("DOMContentLoaded", () => {
   // Your code here
-  const canvasEl = document.getElementById('ttt');
-  const game = new Game();
-  const view = new View(game);
-  view.setupBoard();
+  let canvasEl = document.querySelector('.ttt');
+  let game = new Game();
+  let view = new View(game, canvasEl);
+  // console.log(view);
+  // view.setupBoard();
 });
 

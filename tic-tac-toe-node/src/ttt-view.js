@@ -3,43 +3,30 @@ const Game = require("../ttt_node/game")
 class View {
   constructor(game, el) {
     this.game = game;
-    this.$el = $el;
+    this.el = el;
 
     this.setupBoard();
-    this.bindEvents();
+    //this.bindEvents();
   }
 
   setupBoard() {
-    const $ul = $("<ul>");
-
-    for (let row = 0; row < 3; row++) {
-      for (let col = 0; col < 3; col++) {
-        let $li = $("<li>");
-        $li.data("pos", [row, col]);
-        $ul.append($li);
+    const ourGrid = this.game.board.grid;
+    let ul = document.createElement("ul");
+    for (let i = 0; i < ourGrid.length; i++) {
+      for (let j = 0; j < ourGrid[0].length; j++) {
+        let li = document.createElement("li");
+        ul.appendChild(li);
       }
     }
-    this.$el.append($ul);
-    // const ourGrid = this.game.board.grid;
-    // const ul = document.createElement("ul");
-    // const li = document.createElement("li");
-    // for (let i = 0; i < ourGrid.length; i++) {
-    //   for (let j = 0; j < ourGrid[0].length; j++) {
-    //     // 
-    //   }
-    // }
+    this.el.appendChild(ul);
+
   }
   
-  bindEvents() {
-    this.$el.on("click", "li", (event =. {
-      const $square = $(event.currentTarget);
-      this.makeMove($square);
-    }))
-  }
+  bindEvents() {}
 
   handleClick(e) {}
 
-  makeMove($square) {}
+  makeMove(square) {}
 
 }
 

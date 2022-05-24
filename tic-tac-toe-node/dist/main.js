@@ -15,7 +15,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const View = __webpack_require__(/*! ./ttt-view.js */ \"./src/ttt-view.js\")\nconst Game = __webpack_require__(/*! ../ttt_node/game.js */ \"./ttt_node/game.js\")\n\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  // Your code here\n  const canvasEl = document.getElementById('ttt');\n  const game = new Game();\n  const view = new View(game);\n  view.setupBoard();\n});\n\n\n\n//# sourceURL=webpack://tic-tac-toe-node/./src/index.js?");
+eval("const View = __webpack_require__(/*! ./ttt-view.js */ \"./src/ttt-view.js\")\nconst Game = __webpack_require__(/*! ../ttt_node/game.js */ \"./ttt_node/game.js\")\n\ndocument.addEventListener(\"DOMContentLoaded\", () => {\n  // Your code here\n  let canvasEl = document.querySelector('.ttt');\n  let game = new Game();\n  let view = new View(game, canvasEl);\n  // console.log(view);\n  // view.setupBoard();\n});\n\n\n\n//# sourceURL=webpack://tic-tac-toe-node/./src/index.js?");
 
 /***/ }),
 
@@ -23,9 +23,9 @@ eval("const View = __webpack_require__(/*! ./ttt-view.js */ \"./src/ttt-view.js\
 /*!*************************!*\
   !*** ./src/ttt-view.js ***!
   \*************************/
-/***/ (() => {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("throw new Error(\"Module parse failed: Unexpected token (34:39)\\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\\n|   \\n|   bindEvents() {\\n>     this.$el.on(\\\"click\\\", \\\"li\\\", (event =. {\\n|       const $square = $(event.currentTarget);\\n|       this.makeMove($square);\");\n\n//# sourceURL=webpack://tic-tac-toe-node/./src/ttt-view.js?");
+eval("const Game = __webpack_require__(/*! ../ttt_node/game */ \"./ttt_node/game.js\")\n\nclass View {\n  constructor(game, el) {\n    this.game = game;\n    this.el = el;\n\n    this.setupBoard();\n    //this.bindEvents();\n  }\n\n  setupBoard() {\n    const ourGrid = this.game.board.grid;\n    let ul = document.createElement(\"ul\");\n    for (let i = 0; i < ourGrid.length; i++) {\n      for (let j = 0; j < ourGrid[0].length; j++) {\n        let li = document.createElement(\"li\");\n        ul.appendChild(li);\n      }\n    }\n    this.el.appendChild(ul);\n\n  }\n  \n  bindEvents() {}\n\n  handleClick(e) {}\n\n  makeMove(square) {}\n\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack://tic-tac-toe-node/./src/ttt-view.js?");
 
 /***/ }),
 
